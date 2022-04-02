@@ -20,11 +20,12 @@ def reverse_string(str)
 
   return str_arr if str_arr.length == 1
 
-  for i in 0...str_arr.length/2 do
-    j = str_arr.length - i - 1
-    cache_i = str_arr[i]
-    str_arr[i] = str_arr[j]
-    str_arr[j] = cache_i
+  left, right = 0, str_arr.length - 1
+
+  while left < right
+    str_arr[left], str_arr[right] = str_arr[right], str_arr[left]
+    left += 1
+    right -= 1
   end
 
   return str_arr
