@@ -44,8 +44,39 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 # end
 
 # O(n) time | O(1) space
+# def valid_palindrome?(str)
+#   return false if str.nil?
+
+#   return true if str == ''
+
+#   left = 0
+#   right = str.length - 1
+
+#   while left < right
+#     while left < right && !str[left].match(/[a-zA-Z0-9]/)
+#       left += 1
+#     end
+
+#     while right > left && !str[right].match(/[a-zA-Z0-9]/)
+#       right -= 1
+#     end
+
+#     if str[left].downcase != str[right].downcase
+#       return false
+#     else
+#       left += 1
+#       right -= 1
+#     end
+#   end
+
+#   return true
+# end
+
+# O(n) time | O(n) space
 def valid_palindrome?(str)
   return false if str.nil?
+
+  str.gsub!(/[^a-zA-Z0-9]/, '')
 
   return true if str == ''
 
@@ -53,14 +84,6 @@ def valid_palindrome?(str)
   right = str.length - 1
 
   while left < right
-    while left < right && !str[left].match(/[a-zA-Z0-9]/)
-      left += 1
-    end
-
-    while right > left && !str[right].match(/[a-zA-Z0-9]/)
-      right -= 1
-    end
-
     if str[left].downcase != str[right].downcase
       return false
     else
