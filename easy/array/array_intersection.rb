@@ -17,21 +17,28 @@ def array_intersection(nums1, nums2)
 
   memo = {}
   intersection = []
+  i = 0
 
-  nums1.each do |num|
-    if memo.key?(num)
-      memo[num] += 1
+  while i < nums1.length
+    if memo.key?(nums1[i])
+      memo[nums1[i]] += 1
     else
-      memo[num] = 1
+      memo[nums1[i]] = 1
     end
+
+    i += 1
   end
 
-  nums2.each do |num|
-    if memo[num] && memo[num] > 0
-      intersection << num
+  i = 0
 
-      memo[num] -= 1
+  while i < nums2.length
+    if memo[nums2[i]] && memo[nums2[i]] > 0
+      intersection << nums2[i]
+
+      memo[nums2[i]] -= 1
     end
+
+    i += 1
   end
 
   return intersection
@@ -40,23 +47,23 @@ end
 require 'minitest/autorun'
 
 describe 'assertions' do
-  it 'case 1' do
+  it 'should return [] for ([], [])' do
     assert_equal(array_intersection([], []), [])
   end
 
-  it 'case 2' do
+  it 'should return [] for ([1,2], [])' do
     assert_equal(array_intersection([1, 2], []), [])
   end
 
-  it 'case 3' do
+  it 'should return [1] for [1]' do
     assert_equal(array_intersection([1], [1]), [1])
   end
 
-  it 'case 4' do
+  it 'should return [2,2] for ([1,2,2,1], [2,2])' do
     assert_equal(array_intersection([1,2,2,1], [2,2]), [2,2])
   end
 
-  it 'case 5' do
+  it 'should return [9, 4] for ([4,9,5], [9,4,9,8,4])' do
     assert_equal(array_intersection([4,9,5], [9,4,9,8,4]), [9, 4])
   end
 end

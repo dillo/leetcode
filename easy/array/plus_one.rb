@@ -27,20 +27,24 @@ Thus, the result should be [1,0].
 =end
 
 # O(n) time | O(n) space
-def plus_one(nums)
-  for i in 0...nums.length do
-    j = nums.length - 1 - i
+def plus_one(digits)
+  i = 0
 
-    if nums[j] == 9
-      nums[j] = 0
+  while i < digits.length
+    j = digits.length - 1 - i
+
+    if digits[j] == 9
+      digits[j] = 0
     else
-      nums[j] += 1
+      digits[j] += 1
 
-      return nums
+      return digits
     end
+
+    i += 1
   end
 
-  return nums.unshift(1)
+  return digits.unshift(1)
 end
 
 require 'minitest/autorun'

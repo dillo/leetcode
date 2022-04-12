@@ -52,23 +52,23 @@ end
 require 'minitest/autorun'
 
 describe 'assertions' do
-  it 'case 1' do
+  it 'should return [1] for ([1], 9)' do
     assert_equal(rotate_array([1], 9), [1])
   end
 
-  it 'case 2' do
+  it 'should return [2,1] for ([1,2], 1)' do
     assert_equal(rotate_array([1, 2], 1), [2, 1])
   end
 
-  it 'case 3' do
+  it 'should return [1,2] for ([1,2], 2)' do
     assert_equal(rotate_array([1, 2], 2), [1, 2])
   end
 
-  it 'case 3' do
+  it 'should return [5,6,7,1,2,3,4] for ([1,2,3,4,5,6,7], 3)' do
     assert_equal(rotate_array([1,2,3,4,5,6,7], 3), [5,6,7,1,2,3,4])
   end
 
-  it 'case 3' do
+  it 'should return [3,99,-1,-100] for ([-1,-100,3,99], 2)' do
     assert_equal(rotate_array([-1,-100,3,99], 2), [3,99,-1,-100])
   end
 end

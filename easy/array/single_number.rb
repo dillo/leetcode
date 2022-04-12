@@ -6,12 +6,12 @@ You must implement a solution with a linear runtime complexity and use only cons
 
 # O(n) time | O(1) space
 # def single_number(nums)
-#   return nums.pop if nums.length <= 1
-
+#   i = 0
 #   non_dup = 0
 
-#   nums.each do |num|
-#     non_dup ^= num
+#   while i < nums.length
+#       non_dup ^= nums[i]
+#       i += 1
 #   end
 
 #   return non_dup
@@ -36,15 +36,15 @@ end
 require 'minitest/autorun'
 
 describe 'assertions' do
-  it 'case 1' do
+  it 'should return 1 for [1]' do
     assert_equal(single_number([1]), 1)
   end
 
-  it 'case 2' do
+  it 'should return 2 for [1,1,2]' do
     assert_equal(single_number([1, 1, 2]), 2)
   end
 
-  it 'case 3' do
+  it 'should return 4 for [4,1,2,1,2]' do
     assert_equal(single_number([4, 1, 2, 1, 2]), 4)
   end
 end
