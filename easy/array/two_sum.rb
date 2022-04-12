@@ -31,7 +31,6 @@ def two_sum(nums, target)
       return [memo[diff], i]
     else
       memo[nums[i]] = i
-
       i += 1
     end
   end

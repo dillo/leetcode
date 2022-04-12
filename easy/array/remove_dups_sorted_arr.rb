@@ -12,23 +12,23 @@ def remove_duplicates(nums)
   return 0 if nums.empty?
   return 1 if nums.length == 1
 
-  uniq_count = 1
-  left_index = 0
-  right_index = 1
+  count = 1
+  left = 0
+  right = 1
 
-  while left_index < nums.length - 1 && right_index < nums.length
-    if nums[left_index] == nums[right_index]
-      nums[right_index] = nil
+  while left < nums.length && right < nums.length
+    if nums[left] == nums[right]
+      nums[right] = nil
     else
-      nums[left_index + 1] = nums[right_index]
-      left_index += 1
-      uniq_count += 1
+      nums[left + 1] = nums[right]
+      left += 1
+      count += 1
     end
 
-    right_index += 1
+    right += 1
   end
 
-  return uniq_count
+  return count
 end
 
 require 'minitest/autorun'
