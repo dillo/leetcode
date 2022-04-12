@@ -13,19 +13,35 @@ Input: nums = [0]
 Output: [0]
 =end
 
+# def move_zeroes(nums)
+#   return nums if nums.length <= 1
+
+#   pointer = 0
+
+#   nums.each_with_index do |num, idx|
+#     if num != 0
+#       nums[pointer], nums[idx] = nums[idx], nums[pointer]
+
+#       pointer += 1
+#     else
+#       next
+#     end
+#   end
+
+#   return nums
+# end
+
 def move_zeroes(nums)
-  return nums if nums.length <= 1
+  i = 0
+  j = 0
 
-  pointer = 0
-
-  nums.each_with_index do |num, idx|
-    if num != 0
-      nums[pointer], nums[idx] = nums[idx], nums[pointer]
-
-      pointer += 1
-    else
-      next
+  while i < nums.length
+    if nums[i] != 0
+      nums[j], nums[i] = nums[i], nums[j]
+      j += 1
     end
+
+    i += 1
   end
 
   return nums

@@ -20,16 +20,19 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 =end
 
-def two_sum(list, target)
+def two_sum(nums, target)
   memo = {}
+  i = 0
 
-  list.each_with_index do |num, i|
-    diff = target - num
+  while i < nums.length
+    diff = target - nums[i]
 
-    if memo.key?(diff)
+    if memo[diff]
       return [memo[diff], i]
     else
-      memo[num] = i
+      memo[nums[i]] = i
+
+      i += 1
     end
   end
 end
@@ -37,11 +40,11 @@ end
 require 'minitest/autorun'
 
 describe 'assertions' do
-  it 'case 1' do
+  it 'should return [0, 1] for ([1, 2], 3)' do
     assert_equal(two_sum([1, 2], 3), [0, 1])
   end
 
-  it 'case 2' do
+  it 'should return [0, 1] for ([2,7,11,15], 9)' do
     assert_equal(two_sum([2,7,11,15], 9), [0, 1])
   end
 end
