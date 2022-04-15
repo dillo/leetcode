@@ -49,15 +49,15 @@ describe 'assertions' do
     assert_equal(valid_annagram?(str_one, str_two), false)
   end
 
-  it 'is true case 1' do
+  it 'should return bca for abc' do
     assert_equal(valid_annagram?('abc', 'bca'), true)
   end
 
-  it 'is true case 2' do
+  it 'should return `academy code` for `code academy`' do
     assert_equal(valid_annagram?('code academy', 'academy code'), true)
   end
 
-  it 'is true case 3' do
+  it 'should return gramana for ANAGRAM' do
     assert_equal(valid_annagram?('ANAGRAM', 'gramana'), true)
   end
 end

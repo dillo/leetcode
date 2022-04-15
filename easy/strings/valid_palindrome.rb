@@ -98,43 +98,43 @@ end
 require 'minitest/autorun'
 
 describe 'assertions' do
-  it 'case 1' do
+  it 'should return false for nil' do
     assert_equal(valid_palindrome?(nil), false)
   end
 
-  it 'case 2' do
+  it 'should return true for ''' do
     assert_equal(valid_palindrome?(''), true)
   end
 
-  it 'case 3' do
+  it 'should return true for a' do
     assert_equal(valid_palindrome?('a'), true)
   end
 
-  it 'case 4' do
+  it 'should return false for ab' do
     assert_equal(valid_palindrome?('ab'), false)
   end
 
-  it 'case 5' do
+  it 'should return true for aba' do
     assert_equal(valid_palindrome?('aba'), true)
   end
 
-  it 'case 6' do
+  it 'should return true for `A man, a plan, a[ canal: Panama`' do
     assert_equal(valid_palindrome?('A man, a plan, a[ canal: Panama'), true)
   end
 
-  it 'case 7' do
+  it 'should return true for .,' do
     assert_equal(valid_palindrome?('.,'), true)
   end
 
-  it 'case 8' do
+  it 'should return true for a.' do
     assert_equal(valid_palindrome?('a.'), true)
   end
 
-  it 'case 9' do
+  it 'should return true for ,' do
     assert_equal(valid_palindrome?(','), true)
   end
 
-  it 'case 10' do
+  it 'should return for ' '' do
     assert_equal(valid_palindrome?(' '), true)
   end
 end

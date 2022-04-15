@@ -31,42 +31,39 @@ Explanation: In the canonical path, multiple consecutive slashes are replaced by
 def canonical_path(absolute_path)
   stack = []
 
-  stack.push('/')
-
-  absolute_path.split('/').each do |e|
-    next if e == '' || e == '.'
-
-    if e == '..'
-      next if stack.length == 1
+  absolute_path.split('/').each do |s|
+    if s == '' || s == '.'
+      next
+    elsif s == '..'
       stack.pop
     else
-      stack.push(e)
+      stack.push(s)
     end
   end
 
-  return stack.join('/').squeeze('/')
+  return "/#{stack.join('/')}"
 end
 
 require 'minitest/autorun'
 
 describe 'assertions' do
-  it 'returns the canonical path case 1' do
+  it 'should return / for /' do
     assert_equal(canonical_path('/'), '/')
   end
 
-  it 'returns the canonical path case 2' do
+  it 'should return /home for /home/' do
     assert_equal(canonical_path('/home/'), '/home')
   end
 
-  it 'returns the canonical path case 3' do
+  it 'should return / for /../' do
     assert_equal(canonical_path('/../'), '/')
   end
 
-  it 'returns the canonical path case 4' do
+  it 'should return /home/foo for /home//foo/' do
     assert_equal(canonical_path('/home//foo/'), '/home/foo')
   end
 
-  it 'returns the canonical path case 4' do
+  it 'should return /home/baz for /home/foo/bar/../.././/baz/' do
     assert_equal(canonical_path('/home/foo/bar/../.././/baz/'), '/home/baz')
   end
 end
